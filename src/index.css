@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/assets/minecraft-font.ttf') format('truetype');
+}
+
+:root {
+  --minecraft-dirt: #856043;
+  --minecraft-grass: #5c9b1d;
+  --minecraft-stone: #828282;
+  --minecraft-wood: #a0522d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Minecraft', sans-serif;
+}
+
+body {
+  background-image: url('/assets/minecraft-bg.png');
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header img {
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+.todo-input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--minecraft-stone);
+  border: 3px solid var(--minecraft-dirt);
+  color: white;
+}
+
+.todo-input button,
+.todo-item button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--minecraft-grass);
+  border: 3px solid var(--minecraft-wood);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.todo-input button:hover,
+.todo-item button:hover {
+  transform: scale(1.05);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--minecraft-stone);
+  padding: 1rem;
+  border: 3px solid var(--minecraft-dirt);
+}
+
+.todo-item span {
+  flex: 1;
+  color: white;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  opacity: 0.7;
+}

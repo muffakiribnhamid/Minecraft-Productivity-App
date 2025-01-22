@@ -1,0 +1,267 @@
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/assets/minecraft-font.ttf') format('truetype');
+}
+
+:root {
+  --minecraft-dirt: #856043;
+  --minecraft-grass: #5c9b1d;
+  --minecraft-stone: #828282;
+  --minecraft-wood: #a0522d;
+  --minecraft-diamond: #4aedd9;
+  --minecraft-gold: #fcdc5a;
+  --minecraft-redstone: #ff3624;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  background: url('/assets/minecraft-bg.png') center/cover fixed;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 2rem;
+  border: 4px solid var(--minecraft-stone);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--minecraft-diamond), var(--minecraft-gold), var(--minecraft-redstone));
+  animation: borderGlow 3s infinite linear;
+}
+
+@keyframes borderGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.minecraft-logo {
+  width: 300px;
+  margin-bottom: 2rem;
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.todo-input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 3px solid var(--minecraft-stone);
+  color: white;
+  font-family: 'Minecraft', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.todo-input input:focus {
+  outline: none;
+  border-color: var(--minecraft-diamond);
+  box-shadow: 0 0 10px var(--minecraft-diamond);
+}
+
+.todo-input button,
+.todo-item button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--minecraft-grass);
+  border: 3px solid var(--minecraft-wood);
+  color: white;
+  cursor: pointer;
+  font-family: 'Minecraft', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.todo-input button:hover,
+.todo-item button:hover {
+  transform: scale(1.05);
+  animation: buttonGlow 1.5s infinite;
+}
+
+@keyframes buttonGlow {
+  0%, 100% { box-shadow: 0 0 5px var(--minecraft-grass); }
+  50% { box-shadow: 0 0 15px var(--minecraft-grass); }
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(var(--minecraft-stone), 0.3);
+  padding: 1rem;
+  border: 3px solid var(--minecraft-dirt);
+  position: relative;
+  transition: all 0.3s ease;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.todo-item:hover {
+  transform: translateX(10px);
+  border-color: var(--minecraft-gold);
+}
+
+.todo-item span {
+  flex: 1;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-align: left;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  opacity: 0.7;
+  color: var(--minecraft-redstone);
+}
+
+.todo-item.completed span::before {
+  content: '✔';
+  position: absolute;
+  left: -20px;
+  color: var(--minecraft-grass);
+  animation: checkmark 0.5s ease-out;
+}
+
+@keyframes checkmark {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.todo-item button {
+  background-color: var(--minecraft-redstone);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.todo-item button:hover {
+  opacity: 1;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Empty state animation */
+.todo-list:empty::after {
+  content: 'No tasks yet! Add one above.';
+  color: var(--minecraft-stone);
+  font-family: 'Minecraft', sans-serif;
+  padding: 2rem;
+  text-align: center;
+  display: block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-buttons .minecraft-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.tab-buttons .minecraft-btn.active {
+  background-color: var(--minecraft-diamond);
+  color: #000;
+}

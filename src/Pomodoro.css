@@ -1,0 +1,246 @@
+.pomodoro-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: url('/assets/minecraft-stone.png'), linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+  background-blend-mode: overlay;
+  border: 4px solid #2d2d2d;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.timer-display {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-display.work {
+  background: linear-gradient(45deg, rgba(92, 155, 29, 0.2), rgba(92, 155, 29, 0.1));
+  border: 2px solid #5c9b1d;
+}
+
+.timer-display.break {
+  background: linear-gradient(45deg, rgba(252, 220, 90, 0.2), rgba(252, 220, 90, 0.1));
+  border: 2px solid #fcdc5a;
+}
+
+.mode-indicator {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.mode-pill {
+  padding: 0.75rem 2rem;
+  border-radius: 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 1px;
+}
+
+.mode-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg, #fcdc5a, #4aedd9);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.mode-pill.work {
+  background-color: #5c9b1d;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.mode-pill.break {
+  background-color: #fcdc5a;
+  color: #2d2d2d;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.time-block {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.time-block::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4aedd9, #fcdc5a);
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.time {
+  font-size: 6rem;
+  font-family: 'Minecraft', monospace;
+  color: #fff;
+  text-shadow: 
+    2px 2px 0 #4aedd9,
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.time::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #4aedd9, transparent);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #2d2d2d;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4aedd9, #ff3624);
+  transition: width 1s linear;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.controls .minecraft-btn {
+  min-width: 160px;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border: 3px solid #2d2d2d;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls .minecraft-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    transparent 50%,
+    transparent 80%,
+    rgba(0, 0, 0, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.controls .minecraft-btn:hover {
+  transform: translateY(-2px);
+  border-color: #4aedd9;
+}
+
+.controls .minecraft-btn:hover::before {
+  opacity: 1;
+}
+
+.controls .minecraft-btn.active {
+  background-color: #ff3624;
+  border-color: #fcdc5a;
+}
+
+.controls .minecraft-btn.mode-switch {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: #fcdc5a;
+}
+
+.controls .minecraft-btn.mode-switch:hover {
+  border-color: #4aedd9;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Emoji styles */
+.controls .minecraft-btn span {
+  margin-right: 8px;
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .pomodoro-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .time {
+    font-size: 4rem;
+  }
+
+  .controls .minecraft-btn {
+    min-width: 140px;
+    font-size: 1rem;
+  }
+}
