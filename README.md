@@ -11,14 +11,6 @@ A fun and engaging productivity app that combines the charm of Minecraft with po
 - 📱 **Responsive Design**: Works on all devices
 
 
-```bash
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
 ## 🎯 How to Use
 
 1. 📋 **Todo List**: Add, complete, and delete tasks
